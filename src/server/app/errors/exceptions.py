@@ -38,5 +38,7 @@ class AppAuthException(AppException):
         error (AuthErrorCodes): The error code associated with the exception.
     """
 
+    status_code = HTTPStatus.UNAUTHORIZED
+
     def __init__(self, error: AuthErrorCodes):
-        super().__init__(error.value, error.name, HTTPStatus.UNAUTHORIZED)
+        super().__init__(error.value, error.name, self.status_code)
