@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     # External Apps
     "rest_framework",
     "rest_framework_simplejwt",
+    'rest_framework_simplejwt.token_blacklist',
 
     # My Apps
     'app.apps.AppConfig',

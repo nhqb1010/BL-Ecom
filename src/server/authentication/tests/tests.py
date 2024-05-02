@@ -81,6 +81,26 @@ def test_auth_verify_token_failed_invalid_token():
     assert response.data["error_message"] == AuthErrorCodes.INVALID_TOKEN.value
 
 
+@pytest.mark.django_db
+def test_auth_verify_token_after_user_deleted():
+    user = User.objects.create_superuser(email="admin@gmail.com", password="password")
+
+    token = RefreshToken.for_user(user)
+    access_token = str(token.access_token)
+
+    client = APIClient()
+    response = client.post(reverse("token_verify"), { "token": access_token })
+
+    assert response.status_code == status.HTTP_200_OK
+
+    user.delete()
+    assert User.objects.filter(email="admin@gmail.com").first() is None
+
+
+    client = APIClient()
+    response = client.post(reverse("token_verify"), { "token": access_token })
+
+
 # ** Verify Token Tests **
 @pytest.mark.django_db
 def test_auth_verify_token_with_user_info_successfully():
@@ -128,3 +148,7 @@ def test_auth_verify_token_with_user_info_failed():
     assert response.status_code == status.HTTP_401_UNAUTHORIZED
     assert response.data["error_code"] == AuthErrorCodes.INVALID_TOKEN.name
     assert response.data["error_message"] == AuthErrorCodes.INVALID_TOKEN.value 
+
+
+
+

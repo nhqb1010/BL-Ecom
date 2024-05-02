@@ -32,14 +32,21 @@ def login_view(request):
 @api_view(['POST'])
 def verify_token_view(request):
     serializer = TokenVerifySerializer(data=request.data)
+    print("Hahaaha")
 
     try:
         serializer.is_valid()
     except TokenError as _:
         error = AppAuthException(AuthErrorCodes.INVALID_TOKEN)
         return Response(format_error_response(error), status=error.status_code)
+    except Exception as e:
+        print("Hahaaha 2")
 
-    return Response(serializer.validated_data, status=status.HTTP_200_OK)
+        print(e)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    print("Hahaaha 3", serializer.validated_data)
+    return Response({}, status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])
