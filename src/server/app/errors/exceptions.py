@@ -18,7 +18,7 @@ class AppException(Exception):
         self.message = message
         self.status_code = status_code
 
-    def toDict(self):
+    def to_dict(self):
         """
         Converts the exception to a dictionary representation.
 

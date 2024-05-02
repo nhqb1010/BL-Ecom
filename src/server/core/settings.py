@@ -99,8 +99,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 REST_FRAMEWORK = {
+    "EXCEPTION_HANDLER": "app.errors.rest_handlers.app_exception_handler",
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework_simplejwt.authentication.JWTAuthentication",
+        "authentication.jwt.JWTAuthentication",
     ]
 }
 
@@ -110,7 +111,7 @@ SIMPLE_JWT = {
     "ROTATE_REFRESH_TOKENS": False,
     "BLACKLIST_AFTER_ROTATION": False,
     "UPDATE_LAST_LOGIN": True,
-    "SIGNING_KEY": "complexsigningkey",  # generate a key and replace me
+    "SIGNING_KEY": SECRET_KEY, 
     "ALGORITHM": "HS512",
 }
 
