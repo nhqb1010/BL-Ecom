@@ -98,7 +98,9 @@ def test_auth_verify_token_after_user_deleted():
 
 
     client = APIClient()
-    response = client.post(reverse("token_verify"), { "token": access_token })
+    response2 = client.post(reverse("token_verify"), { "token": access_token })
+
+    assert response2.status_code == status.HTTP_200_OK
 
 
 # ** Verify Token Tests **
@@ -147,7 +149,33 @@ def test_auth_verify_token_with_user_info_failed():
 
     assert response.status_code == status.HTTP_401_UNAUTHORIZED
     assert response.data["error_code"] == AuthErrorCodes.INVALID_TOKEN.name
-    assert response.data["error_message"] == AuthErrorCodes.INVALID_TOKEN.value 
+    assert response.data["error_message"] == AuthErrorCodes.INVALID_TOKEN.value
+
+
+@pytest.mark.django_db
+def test_auth_verify_token_with_user_info_failed_after_user_deleted():
+    user = User.objects.create_superuser(email="admin@gmail.com", password="password")
+
+    token = RefreshToken.for_user(user)
+    access_token = str(token.access_token)
+
+    client = APIClient()
+    client.credentials(HTTP_AUTHORIZATION=f"Bearer {access_token}")
+    response = client.get(reverse("token_verify_with_user_info"))
+
+    assert response.status_code == status.HTTP_200_OK
+    assert response.data["email"] == "admin@gmail.com"
+    assert response.data["id"] == str(user.id)
+    assert response.data["is_admin"] == user.is_staff
+
+    user.delete()
+    assert User.objects.filter(email="admin@gmail.com").first() is None
+
+    response2 = client.get(reverse("token_verify_with_user_info"))
+    print(response2.data)
+
+    assert response2.status_code == status.HTTP_401_UNAUTHORIZED
+    assert response2.data["error_code"] == AuthErrorCodes.INVALID_TOKEN.name
 
 
 

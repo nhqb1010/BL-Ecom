@@ -27,5 +27,10 @@ class JWTAuthentication(authentication.BaseAuthentication):
         except jwt.DecodeError:
             raise AuthenticationFailed(AuthErrorCodes.INVALID_TOKEN.name)
         
-        user = User.objects.get(id=payload["user_id"])
-        return (user, None)
+        # ! Should enhance?
+        try:
+            user = User.objects.get(id=payload["user_id"])
+            return (user, None)
+        except User.DoesNotExist:
+            raise AuthenticationFailed(AuthErrorCodes.INVALID_TOKEN.name)
+        
