@@ -68,6 +68,7 @@
     --bg-color: #fff;
 }
 
+span,
 a,
 p,
 h1,
@@ -85,4 +86,8 @@ image {
 
 body {
     color: var(--text-color);
+}
+
+section {
+    padding: 4.5rem 0 1.5rem;
 }

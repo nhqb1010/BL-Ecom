@@ -1,23 +1,16 @@
 <script setup lang="ts">
-import Counter from "../components/Counter.vue";
+import AppBannerSlide from "@/components/home/AppSlide.vue";
 </script>
 
 <template>
-    <main>
-        <h1>This is from the home page</h1>
-
-        <!-- Counter Section -->
-        <Counter />
-    </main>
+    <section id="home-section">
+        <!-- Banner Slides -->
+        <AppBannerSlide />
+    </section>
 </template>
 
 <style scoped>
-main {
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+#home-section {
+    overflow-x: hidden;
 }
 </style>
