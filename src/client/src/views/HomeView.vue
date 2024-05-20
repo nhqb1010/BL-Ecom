@@ -6,6 +6,9 @@ import AppBannerSlide from "@/components/home/AppSlide.vue";
     <section id="home-section">
         <!-- Banner Slides -->
         <AppBannerSlide />
+
+        <!-- Test -->
+        <h1>Test from Bao</h1>
     </section>
 </template>
 
