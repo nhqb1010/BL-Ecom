@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { useScriptTag } from "@vueuse/core";
 
 const swiperScriptLink = `https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js`;
@@ -9,10 +9,10 @@ useScriptTag(
     // On loaded 'swiper' script
     () => {
         // Initialize Swiper
+        // @ts-ignore
         const swiper = new Swiper(".swiper__container", {
             spaceBetween: 30,
             centeredSlides: true,
-            spaceBetween: 30,
             autoplay: {
                 delay: 5000,
             },
