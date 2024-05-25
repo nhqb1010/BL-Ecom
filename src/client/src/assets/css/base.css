@@ -66,6 +66,8 @@
     --light-orange-color: #ff7e00;
     --text-color: #1a2428;
     --bg-color: #fff;
+
+    --nav-height: 3.5rem;
 }
 
 span,
@@ -89,5 +91,5 @@ body {
 }
 
 section {
-    padding: 4.5rem 0 1.5rem;
+    padding-bottom: 1.5rem;
 }

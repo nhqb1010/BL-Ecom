@@ -12,5 +12,6 @@ import AppBannerSlide from "@/components/home/AppSlide.vue";
 <style scoped>
 #home-section {
     overflow-x: hidden;
+    padding-top: var(--nav-height);
 }
 </style>

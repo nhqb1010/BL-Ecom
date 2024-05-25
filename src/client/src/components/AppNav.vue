@@ -1,7 +1,20 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+interface NavLink {
+    name: string;
+    href: string;
+}
+
+const nav_links: NavLink[] = [
+    { name: "Home", href: "#home" },
+    { name: "Categories", href: "#categories" },
+    { name: "Products", href: "#products" },
+    { name: "About", href: "#about" },
+    { name: "Customers", href: "#customers" },
+];
+</script>
 
 <template>
-    <header>
+    <nav>
         <!-- Basket Icon -->
         <a href="#" class="nav__logo"><i class="bx bx-basket"></i>Delicacy</a>
 
@@ -10,11 +23,9 @@
 
         <!-- Navbar Links -->
         <ul class="nav__links">
-            <li class="nav__link"><a class="active" href="#home">Home</a></li>
-            <li class="nav__link"><a href="#categories">Categories</a></li>
-            <li class="nav__link"><a href="#products">Products</a></li>
-            <li class="nav__link"><a href="#about">About</a></li>
-            <li class="nav__link"><a href="#customers">Customers</a></li>
+            <li v-for="link in nav_links" :key="link.name" class="nav__link">
+                <a :href="link.href">{{ link.name }}</a>
+            </li>
         </ul>
 
         <!-- Profile -->
@@ -23,13 +34,14 @@
             <span>John Doe</span>
             <i class="bx bx-caret-down"></i>
         </div>
-    </header>
+    </nav>
 </template>
 
 <style lang="scss" scoped>
-header {
+nav {
     position: fixed;
     width: 100%;
+    height: var(--nav-height);
     top: 0;
     right: 0;
     z-index: 1000;
@@ -40,7 +52,7 @@ header {
     background: var(--bg-color);
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
         rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-    transition: 0.5s;
+    transition: all 0.5s ease;
 
     .nav__logo {
         display: flex;
@@ -72,7 +84,7 @@ header {
                     background-color: var(--green-color);
                     color: var(--bg-color);
                     border-radius: 5rem;
-                    transition: background 0.5s ease-in;
+                    transition: all 0.3s ease;
                 }
             }
         }
