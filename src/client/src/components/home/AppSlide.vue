@@ -83,7 +83,12 @@ useScriptTag(
 
 <style lang="scss" scoped>
 .swiper__container {
+    width: 100vw;
+    max-width: 1920px;
+
     .swiper-wrapper {
+        width: 100%;
+
         .swiper__slide {
             width: 100%;
             height: 100%;
