@@ -16,9 +16,13 @@
             </p>
 
             <p class="introduction__description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                eget felis eget nunc ultrices ultricies. Donec nec nunc nec nunc
-                ultrices ultricies. Donec nec nunc nec nunc ultrices ultricies.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque
+                id, dolorem temporibus explicabo placeat vero veritatis culpa
+                quod quidem, hic voluptatum corporis incidunt odio corrupti
+                nihil ut saepe quibusdam! Qui, aliquid modi praesentium a odio
+                corporis assumenda ipsum ea animi, quibusdam illum, temporibus
+                repudiandae dolores enim quas molestias vitae voluptatem
+                consequatur optio et nam saepe!
             </p>
         </div>
 
@@ -36,15 +40,14 @@
 <style lang="scss" scoped>
 .introduction {
     margin-top: 1rem;
-    max-width: 1000px;
+    max-width: 1200px;
     margin-inline: auto;
 
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    border: 1px solid red;
 
     &__text {
         padding: 1rem;
+        margin-inline: auto;
 
         * {
             display: block;
@@ -55,13 +58,14 @@
             text-align: center;
             color: var(--orange-color);
             max-width: 14ch;
+            margin-bottom: 2rem;
         }
 
         p {
             margin-top: 1.2rem;
-            text-align: justify;
+            line-height: 1.5;
             width: 100%;
-            max-width: 40ch;
+            max-width: 35ch;
             object-fit: contain;
         }
     }
@@ -69,18 +73,29 @@
     &__brand {
         display: grid;
         place-items: center;
+
         img {
-            width: 70%;
+            width: 85%;
             max-width: 30em;
             padding: 0.5rem;
             aspect-ratio: 1 / 1;
+            border-radius: 20px;
         }
     }
 }
 
-.dummy-image {
-    max-width: 100%;
-    aspect-ratio: 1 / 3;
-    border: 1px solid blue;
+@media (min-width: 768px) {
+    .introduction {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+
+        &__text {
+            margin-left: auto;
+            margin-right: initial;
+
+            p {
+                max-width: 50ch;
+            }
+        }
+    }
 }
 </style>
