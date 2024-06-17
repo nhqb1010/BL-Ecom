@@ -1,0 +1,15 @@
+@import "./base.css";
+
+.nav__logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--orange-color);
+    gap: 0.5rem;
+
+    .bx {
+        font-size: 24px;
+        color: var(--orange-color);
+    }
+}
