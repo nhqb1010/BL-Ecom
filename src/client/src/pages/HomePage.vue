@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import AppBannerSlide from "@/components/home/AppSlide.vue";
 import Introduction from "@/components/home/Introduction.vue";
+import Products from "@/components/home/Products.vue";
 </script>
 
 <template>
@@ -8,7 +9,11 @@ import Introduction from "@/components/home/Introduction.vue";
         <!-- Banner Slides -->
         <AppBannerSlide />
 
+        <!-- Introduction Section -->
         <Introduction />
+
+        <!-- Products Section -->
+        <Products />
     </section>
 </template>
 
