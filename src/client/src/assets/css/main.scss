@@ -45,11 +45,14 @@
     padding: 0.5rem 1.5rem;
     font-weight: 600;
     text-decoration: none;
-    transition: all 0.3s ease-in;
+    transition: all 0.2s ease-in;
 
-    &:hover {
-        color: var(--light-green-color);
-        background-color: var(--light-orange-color);
+    &:hover,
+    &:focus {
+        color: var(--orange-color);
+        background: transparent;
+        outline: solid 2px var(--orange-color);
+        outline-offset: -2px;
     }
 }
 
