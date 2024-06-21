@@ -1,18 +1,26 @@
 <script setup lang="ts">
+import { useImage } from "@vueuse/core";
+
 import type { IProductDetailType } from "@/types/products";
 
 const { imageUrl, name, price, originalPrice } =
     defineProps<IProductDetailType>();
+
+const { isReady: isLoadedImage } = useImage({ src: imageUrl });
 </script>
 
 <template>
     <div class="product-detail">
         <div class="product-detail__image">
+            <!-- Lazy Load the image -->
             <img
+                v-if="isLoadedImage"
                 :src="imageUrl"
                 alt="Product"
                 class="product-detail__image-image"
             />
+
+            <div v-else class="skeleton skeleton__square"></div>
         </div>
 
         <div class="product-detail__info">
