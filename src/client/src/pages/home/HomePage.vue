@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import AppBannerSlide from "@/components/home/AppSlide.vue";
-import Introduction from "@/components/home/Introduction.vue";
-import Products from "@/components/home/Products.vue";
+import AppBannerSlide from "./AppSlide.vue";
+import BlogsSection from "./Blogs.vue";
+import IntroductionSection from "./Introduction.vue";
+import ProductsSection from "./Products.vue";
 </script>
 
 <template>
@@ -10,10 +11,13 @@ import Products from "@/components/home/Products.vue";
         <AppBannerSlide />
 
         <!-- Introduction Section -->
-        <Introduction />
+        <IntroductionSection />
 
         <!-- Products Section -->
-        <Products />
+        <ProductsSection />
+
+        <!-- Blogs Section -->
+        <BlogsSection />
     </section>
 </template>
 

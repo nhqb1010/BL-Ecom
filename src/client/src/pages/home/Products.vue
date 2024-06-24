@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { IProductDetailType } from "@/types/products";
 
-import ProductCard from "../ProductCard.vue";
+import ProductCard from "@/components/ProductCard.vue";
 
 const products: IProductDetailType[] = [
     {
@@ -43,7 +43,7 @@ const products: IProductDetailType[] = [
 
 <style lang="scss" scoped>
 .products {
-    margin-block: 1.5rem;
+    margin-block: 3rem;
     max-width: 840px;
     margin-inline: auto;
     padding-inline: 0.5rem;
@@ -54,7 +54,7 @@ const products: IProductDetailType[] = [
         text-align: center;
         color: var(--orange-color);
         margin-inline: auto;
-        margin-bottom: 1.65rem;
+        margin-bottom: 2rem;
     }
 
     &__container {
