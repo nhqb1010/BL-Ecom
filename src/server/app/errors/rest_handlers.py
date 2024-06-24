@@ -1,8 +1,7 @@
 from rest_framework.views import exception_handler
-from rest_framework.exceptions import AuthenticationFailed
+from rest_framework.response import Response
 
-from app.errors.error_codes import AuthErrorCodes
-from app.errors.exceptions import AppAuthException
+from app.errors.exceptions import AppException
 
 
 def app_exception_handler(exc, context):
@@ -18,17 +17,11 @@ def app_exception_handler(exc, context):
 
     """
 
-    response = exception_handler(exc, context)
+    # Handle app error
+    if isinstance(exc, AppException):
+        response_data = {
+            "error": exc.to_dict(),
+        }
+        return Response(response_data, status=exc.status_code)
 
-    # Handle authentication errors
-    if isinstance(exc, AuthenticationFailed):
-        auth_message = exc.detail
-
-        is_auth_error = auth_message in AuthErrorCodes.__members__
-
-        if is_auth_error:
-            error = AppAuthException(AuthErrorCodes[auth_message])
-            response.data = error.to_dict()
-            response.status_code = error.status_code
-
-    return response
+    return exception_handler(exc, context)

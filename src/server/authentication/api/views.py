@@ -5,51 +5,49 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework.permissions import IsAuthenticated
-from rest_framework_simplejwt.serializers import TokenObtainPairSerializer, TokenVerifySerializer
+from rest_framework_simplejwt.serializers import (
+    TokenObtainPairSerializer,
+    TokenVerifySerializer,
+)
 from rest_framework_simplejwt.exceptions import TokenError
 
+from app.auth.constants import AppAuthException
 from app.errors.error_codes import AuthErrorCodes
-from app.errors.exceptions import AppAuthException
 from app.errors.utils import format_error_response
 from account.serializers import UserSerializer
 
 User = get_user_model()
 
 
-@api_view(['POST'])
+@api_view(["POST"])
 def login_view(request):
     serializer = TokenObtainPairSerializer(data=request.data)
 
-    try: 
+    try:
         serializer.is_valid()
     except AuthenticationFailed:
         error = AppAuthException(AuthErrorCodes.INVALID_LOGIN_CREDENTIALS)
         return Response(format_error_response(error), status=error.status_code)
-    
+
     return Response(serializer.validated_data, status=status.HTTP_200_OK)
 
 
-@api_view(['POST'])
+@api_view(["POST"])
 def verify_token_view(request):
     serializer = TokenVerifySerializer(data=request.data)
-    print("Hahaaha")
 
     try:
         serializer.is_valid()
     except TokenError as _:
         error = AppAuthException(AuthErrorCodes.INVALID_TOKEN)
-        return Response(format_error_response(error), status=error.status_code)
-    except Exception as e:
-        print("Hahaaha 2")
+        return Response(
+            format_error_response(error), status=status.HTTP_400_BAD_REQUEST
+        )
 
-        print(e)
-        return Response(status=status.HTTP_400_BAD_REQUEST)
-
-    print("Hahaaha 3", serializer.validated_data)
     return Response({}, status=status.HTTP_200_OK)
 
 
-@api_view(['GET'])
+@api_view(["GET"])
 @permission_classes([IsAuthenticated])
 def verify_token_with_user_info_view(request):
     email = request.user.email
