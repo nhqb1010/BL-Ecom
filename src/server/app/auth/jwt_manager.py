@@ -85,4 +85,7 @@ def get_user_from_jwt_request(request: HttpRequest) -> Optional[AbstractBaseUser
     user_id: str = payload.get("user_id")
     user = User.objects.filter(id=user_id).first()
 
+    if not user:
+        raise_jwt_exception(JwtErrorCodes.INVALID_TOKEN)
+
     return user
