@@ -3,15 +3,13 @@ from typing import Optional
 
 from django.http import HttpRequest
 from django.conf import settings
-from django.contrib.auth import get_user_model
 from django.contrib.auth.models import AbstractBaseUser
 
 from app.auth.constants import JwtErrorCodes, JwtAuthException
+from account.services import user as user_sv
 
 JWT_SECRET_KEY = settings.SECRET_KEY
 JWT_HASH_ALGORITHM = settings.__getattr__("SIMPLE_JWT")["ALGORITHM"] or "HS256"
-
-User = get_user_model()
 
 
 def get_token_from_request(request: HttpRequest) -> str | None:
@@ -83,7 +81,7 @@ def get_user_from_jwt_request(request: HttpRequest) -> Optional[AbstractBaseUser
     payload = decode_jwt_token(token)
 
     user_id: str = payload.get("user_id")
-    user = User.objects.filter(id=user_id).first()
+    user = user_sv.find_user(id=user_id)
 
     if not user:
         raise_jwt_exception(JwtErrorCodes.INVALID_TOKEN)

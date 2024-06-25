@@ -1,8 +1,6 @@
 from http import HTTPStatus
 
 from django.http import HttpRequest
-from django.contrib.auth import get_user_model
-from django.shortcuts import get_object_or_404
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework.permissions import IsAuthenticated
@@ -15,9 +13,8 @@ from rest_framework_simplejwt.exceptions import TokenError
 from app.auth.constants import AppException
 from app.api.utils import process_rest_response
 from account.serializers import UserSerializer
+from account.services import user as user_sv
 from authentication.constants.error_codes import AuthErrorCodes
-
-User = get_user_model()
 
 
 @api_view(["POST"])
@@ -53,6 +50,6 @@ def verify_token_view(request: HttpRequest):
 @permission_classes([IsAuthenticated])
 def verify_token_with_user_info_view(request: HttpRequest):
     email = request.user.email
-    user = get_object_or_404(User, email=email)
+    user = user_sv.get_user_by_email(email)
 
     return process_rest_response(UserSerializer(user).data)
