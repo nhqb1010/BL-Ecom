@@ -43,6 +43,10 @@ const { isReady: isLoadedImage } = useImage({ src: imageUrl });
     border-radius: 0.3rem;
     overflow: hidden;
 
+    cursor: pointer;
+
+    transition: transform 0.2s ease-out;
+
     &__image {
         img {
             width: 100%;
@@ -60,6 +64,8 @@ const { isReady: isLoadedImage } = useImage({ src: imageUrl });
             font-size: 1rem;
             line-height: 1.5;
             margin-bottom: 1rem;
+
+            transition: color 0.2s ease;
         }
 
         &-price {
@@ -69,6 +75,16 @@ const { isReady: isLoadedImage } = useImage({ src: imageUrl });
                 font-size: 0.7rem;
                 text-decoration: line-through;
                 color: var(--gray-color);
+            }
+        }
+    }
+
+    &:hover {
+        transform: translateY(-0.2rem);
+
+        .product-detail__info {
+            &-name {
+                color: var(--green-color);
             }
         }
     }

@@ -5,7 +5,7 @@ import ProductCard from "@/components/ProductCard.vue";
 
 const products: IProductDetailType[] = [
     {
-        imageUrl: "https://picsum.photos/150/300",
+        imageUrl: "https://picsum.photos/159/300",
         name: "Hạt điều vị phô mai (Hộp nhựa 120gr)",
         price: 50_000,
     },
