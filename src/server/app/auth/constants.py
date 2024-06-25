@@ -18,7 +18,7 @@ class AppAuthException(AppException):
     status_code = HTTPStatus.UNAUTHORIZED
 
     def __init__(self, error: AuthErrorCodes):
-        super().__init__(error.value, error.name, self.status_code)
+        super().__init__(error, self.status_code)
 
 
 class JwtErrorCodes(AuthErrorCodes):

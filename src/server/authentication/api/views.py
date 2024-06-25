@@ -1,8 +1,10 @@
+from http import HTTPStatus
+
+from django.http import HttpRequest
 from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
-from rest_framework import status
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.serializers import (
@@ -11,46 +13,47 @@ from rest_framework_simplejwt.serializers import (
 )
 from rest_framework_simplejwt.exceptions import TokenError
 
-from app.auth.constants import AppAuthException
+from app.auth.constants import AppException
 from app.errors.error_codes import AuthErrorCodes
-from app.errors.utils import format_error_response
 from account.serializers import UserSerializer
 
 User = get_user_model()
 
 
 @api_view(["POST"])
-def login_view(request):
+def login_view(request: HttpRequest):
     serializer = TokenObtainPairSerializer(data=request.data)
 
     try:
         serializer.is_valid()
     except AuthenticationFailed:
-        error = AppAuthException(AuthErrorCodes.INVALID_LOGIN_CREDENTIALS)
-        return Response(format_error_response(error), status=error.status_code)
+        raise AppException(
+            AuthErrorCodes.INVALID_LOGIN_CREDENTIALS,
+            status_code=HTTPStatus.BAD_REQUEST,
+        )
 
-    return Response(serializer.validated_data, status=status.HTTP_200_OK)
+    return Response(serializer.validated_data, status=HTTPStatus.OK)
 
 
 @api_view(["POST"])
-def verify_token_view(request):
+def verify_token_view(request: HttpRequest):
+    print(request.data)
     serializer = TokenVerifySerializer(data=request.data)
 
     try:
         serializer.is_valid()
     except TokenError as _:
-        error = AppAuthException(AuthErrorCodes.INVALID_TOKEN)
-        return Response(
-            format_error_response(error), status=status.HTTP_400_BAD_REQUEST
+        raise AppException(
+            AuthErrorCodes.INVALID_TOKEN, status_code=HTTPStatus.BAD_REQUEST
         )
 
-    return Response({}, status=status.HTTP_200_OK)
+    return Response({}, status=HTTPStatus.OK)
 
 
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
-def verify_token_with_user_info_view(request):
+def verify_token_with_user_info_view(request: HttpRequest):
     email = request.user.email
     user = get_object_or_404(User, email=email)
 
-    return Response(UserSerializer(user).data, status=status.HTTP_200_OK)
+    return Response(UserSerializer(user).data, status=HTTPStatus.OK)

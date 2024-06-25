@@ -78,7 +78,7 @@ def get_user_from_jwt_request(request: HttpRequest) -> Optional[AbstractBaseUser
     token = get_token_from_request(request)
 
     if not token:
-        raise_jwt_exception(JwtErrorCodes.MISSING_TOKEN)
+        return None
 
     payload = decode_jwt_token(token)
 

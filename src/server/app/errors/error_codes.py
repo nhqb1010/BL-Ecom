@@ -1,7 +1,11 @@
 import enum
 
 
-class AuthErrorCodes(enum.Enum):
+class AppErrorCodes(enum.Enum):
+    pass
+
+
+class AuthErrorCodes(AppErrorCodes):
     """
     Enum class representing authentication errors.
     """
