@@ -79,8 +79,9 @@ h2,
 h3,
 h4,
 h5,
-h6 {
-    font-family: var(--vn-font-family);
+h6,
+input {
+    font-family: var(--vn-font-family) !important;
 }
 
 image {

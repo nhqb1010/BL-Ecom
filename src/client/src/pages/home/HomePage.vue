@@ -2,6 +2,7 @@
 import AppBannerSlide from "./AppSlide.vue";
 import BlogsSection from "./Blogs.vue";
 import IntroductionSection from "./Introduction.vue";
+import JoinUs from "./JoinUs.vue";
 import ProductsSection from "./Products.vue";
 </script>
 
@@ -18,6 +19,9 @@ import ProductsSection from "./Products.vue";
 
         <!-- Blogs Section -->
         <BlogsSection />
+
+        <!-- Join Us Section -->
+        <JoinUs />
     </section>
 </template>
 

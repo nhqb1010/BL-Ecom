@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useMediaQuery } from "@vueuse/core";
-import { computed, onMounted, ref, watch } from "vue";
+import { computed, ref, watch } from "vue";
 import { useRoute } from "vue-router";
 
 import { capitalizeString } from "../utils";
@@ -46,9 +46,7 @@ watch(route, () => {
     }
 
     if (route.hash) {
-        console.log("very nice", route.hash);
         const el = document.querySelector(route.hash);
-        console.log(el);
         if (el) {
             el.scrollIntoView({ behavior: "smooth" });
         }
@@ -66,11 +64,6 @@ watch(route, () => {
 //         }
 //     }
 // });
-
-onMounted(() => {
-    const el = document.querySelector("#customers");
-    console.log(el);
-});
 </script>
 
 <template>
