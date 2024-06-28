@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import AppBannerSlide from "./AppSlide.vue";
-import BlogsSection from "./Blogs.vue";
-import IntroductionSection from "./Introduction.vue";
-import JoinUs from "./JoinUs.vue";
-import ProductsSection from "./Products.vue";
+import AppBannerSlide from "./components/AppSlide.vue";
+import BlogsSection from "./components/Blogs.vue";
+import IntroductionSection from "./components/Introduction.vue";
+import JoinUs from "./components/JoinUs.vue";
+import ProductsSection from "./components/Products.vue";
 </script>
 
 <template>
