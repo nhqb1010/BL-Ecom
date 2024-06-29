@@ -29,7 +29,7 @@
         <!-- Brand Image -->
         <div class="introduction__brand">
             <img
-                src="../../assets/images/dummy-brand.jpg"
+                src="../../../assets/images/dummy-brand.jpg"
                 alt="Brand"
                 class="introduction__brand-image"
             />

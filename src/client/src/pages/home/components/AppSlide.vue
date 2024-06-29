@@ -45,7 +45,7 @@ useScriptTag(
                 </div>
 
                 <img
-                    src="../../assets/images/home-banner.jpg"
+                    src="../../../assets/images/home-banner.jpg"
                     alt="home banner"
                 />
             </div>
@@ -69,7 +69,7 @@ useScriptTag(
                 </div>
 
                 <img
-                    src="../../assets/images/home-salad.jpg"
+                    src="../../../assets/images/home-salad.jpg"
                     alt="home salad"
                 />
             </div>
