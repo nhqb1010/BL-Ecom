@@ -39,6 +39,7 @@ const { isReady: isLoadedImage } = useImage({ src: imageUrl });
 
 <style lang="scss" scoped>
 .product-detail {
+    width: 100%;
     max-width: 260px;
     border-radius: 0.3rem;
     overflow: hidden;

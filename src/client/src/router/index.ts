@@ -11,6 +11,11 @@ const router = createRouter({
             component: HomePage,
         },
         {
+            path: "/products",
+            name: "Products",
+            component: () => import("@/pages/products/ProductsPage.vue"),
+        },
+        {
             path: "/about",
             name: "About",
             // route level code-splitting
@@ -27,6 +32,9 @@ const router = createRouter({
                 top: 200,
             };
         }
+
+        // return to top
+        return { top: 0, behavior: "smooth" };
     },
 });
 

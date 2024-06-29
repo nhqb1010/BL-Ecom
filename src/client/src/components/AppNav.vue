@@ -19,7 +19,7 @@ const isLargeScreen = useMediaQuery("(min-width: 1024px)");
 const navLinks: NavLink[] = [
     { name: "Home" },
     { name: "Home", hash: "#categories", label: "Categories" },
-    { name: "Home", hash: "#products", label: "Products" },
+    { name: "Products" },
     { name: "About", routeType: "vueRouter" },
     { name: "Home", hash: "#customers", label: "Customers" },
 ];

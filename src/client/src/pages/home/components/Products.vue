@@ -2,6 +2,7 @@
 import type { IProductDetailType } from "@/types/products";
 
 import ProductCard from "@/components/ProductCard.vue";
+import { RouterLink } from "vue-router";
 
 const products: IProductDetailType[] = [
     {
@@ -33,9 +34,13 @@ const products: IProductDetailType[] = [
                 />
             </div>
             <div class="products_more">
-                <a href="#" class="btn-link see-more">
+                <!-- <a href="#" class="btn-link see-more">
                     Xem thêm <i class="bx bx-right-arrow-alt"></i>
-                </a>
+                </a> -->
+
+                <RouterLink to="/products" class="btn-link see-more">
+                    Xem thêm <i class="bx bx-right-arrow-alt"></i>
+                </RouterLink>
             </div>
         </div>
     </section>
