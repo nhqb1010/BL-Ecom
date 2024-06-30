@@ -17,10 +17,10 @@ const route = useRoute();
 const isLargeScreen = useMediaQuery("(min-width: 1024px)");
 
 const navLinks: NavLink[] = [
-    { name: "Home" },
-    { name: "Home", hash: "#categories", label: "Categories" },
-    { name: "Products" },
-    { name: "About", routeType: "vueRouter" },
+    { name: "Home", label: "Trang Chủ" },
+    { name: "Payments", label: "Thanh Toán" },
+    { name: "Products", label: "Sản phẩm" },
+    { name: "About", label: "Về Chúng tôi", routeType: "vueRouter" },
     { name: "Home", hash: "#customers", label: "Customers" },
 ];
 
@@ -112,7 +112,7 @@ watch(route, () => {
                     :to="{ name: link.name, hash: link.hash }"
                     :class="{ active: index === isActiveLinkIndex }"
                 >
-                    {{ capitalizeString(link.label || link.name) }}
+                    {{ (link.label || link.name).toUpperCase() }}
                 </RouterLink>
 
                 <!-- Section/External link -->
@@ -174,7 +174,7 @@ nav {
 
         .nav__link {
             a {
-                font-size: 1rem;
+                font-size: 0.75rem;
                 color: var(--text-color);
                 padding: 0.5rem 1rem;
 
@@ -183,6 +183,11 @@ nav {
                     background-color: var(--green-color);
                     color: var(--bg-color);
                     border-radius: 5rem;
+                }
+
+                @media (min-width: 1280px) {
+                    font-size: 1rem;
+                    padding: 0.5rem 1.5rem;
                 }
             }
         }
