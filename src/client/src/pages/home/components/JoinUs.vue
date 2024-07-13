@@ -1,14 +1,33 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
+import { useIntersectionObserver } from "@vueuse/core";
+
 import PVButton from "primevue/button";
 import InputText from "primevue/inputtext";
 
 const email = ref<string>("");
+
+const target = ref(null);
+const targetIsVisible = ref(false);
+
+const { stop } = useIntersectionObserver(
+    target,
+    ([{ isIntersecting }], observerElement) => {
+        targetIsVisible.value = isIntersecting;
+    },
+    { threshold: 0.3 }
+);
 </script>
 
 <template>
-    <div class="home-join-us home-join-us__container" data-aos="flip-right">
+    <div
+        class="home-join-us home-join-us__container"
+        ref="target"
+        :style="{
+            background: targetIsVisible ? 'red !important' : 'blue !important',
+        }"
+    >
         <div class="home-join-us__content">
             <h2 class="home-join-us__content-title">
                 Hãy trở thành một phần của chúng tôi
