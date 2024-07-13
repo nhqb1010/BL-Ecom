@@ -1,13 +1,46 @@
 import type { IProductDetailType } from "@/types/products";
 
+import * as productImgUrl1 from "@/assets/images/products/1.png";
+import * as productImgUrl2 from "@/assets/images/products/2.png";
+import * as productImgUrl3 from "@/assets/images/products/3.png";
+import * as productImgUrl4 from "@/assets/images/products/4.png";
+import * as productImgUrl5 from "@/assets/images/products/5.png";
+
 const mockData: IProductDetailType[] = [
     {
         id: "uuid-100",
-        imageUrl: "https://picsum.photos/159/300",
-        name: "Laptop Dell XPS 13 9310",
-        price: 40000000,
-        originalPrice: 45000000,
-        categories: "Laptop",
+        imageUrl: productImgUrl1.default,
+        name: "OR'SHOW PHÔ MAI",
+        price: 90_000,
+        categories: "bag",
+    },
+    {
+        id: "uuid-100",
+        imageUrl: productImgUrl2.default,
+        name: "OR'SHOW CHOCO",
+        price: 90_000,
+        categories: "bag",
+    },
+    {
+        id: "uuid-100",
+        imageUrl: productImgUrl3.default,
+        name: "OR'SHOW APRICOT",
+        price: 90_000,
+        categories: "bag",
+    },
+    {
+        id: "uuid-100",
+        imageUrl: productImgUrl4.default,
+        name: "OR'SHOW BƠ",
+        price: 90_000,
+        categories: "bag",
+    },
+    {
+        id: "uuid-100",
+        imageUrl: productImgUrl5.default,
+        name: "OR'SHOW TỎI ỚT",
+        price: 90_000,
+        categories: "bag",
     },
     {
         id: "uuid-101",
@@ -22,41 +55,6 @@ const mockData: IProductDetailType[] = [
         name: "Samsung Galaxy Buds FE",
         price: 3_500_000,
         categories: "Tai nghe",
-    },
-    {
-        id: "uuid-103",
-        imageUrl: "https://picsum.photos/152/300",
-        name: "Bàn phím cơ Corsair K95 RGB Platinum XT",
-        price: 5000000,
-        categories: "Phụ kiện máy tính",
-    },
-    {
-        id: "uuid-104",
-        imageUrl: "https://picsum.photos/153/300",
-        name: "Máy in laser đa chức năng HP LaserJet Pro MFP M428fdw",
-        price: 15000000,
-        categories: "Phụ kiện máy tính",
-    },
-    {
-        id: "uuid-105",
-        imageUrl: "https://picsum.photos/154/300",
-        name: "Màn hình cong Samsung Odyssey G7 27 inch",
-        price: 18000000,
-        categories: "Phụ kiện máy tính",
-    },
-    {
-        id: "uuid-106",
-        imageUrl: "https://picsum.photos/155/300",
-        name: "Ổ cứng di động SSD Samsung T7 1TB",
-        price: 3000000,
-        categories: "Phụ kiện máy tính",
-    },
-    {
-        id: "uuid-107",
-        imageUrl: "https://picsum.photos/156/300",
-        name: "Máy sấy tóc Dyson Supersonic",
-        price: 9000000,
-        categories: "Phụ kiện máy tính",
     },
 ];
 

@@ -16,10 +16,6 @@ onMounted(async () => {
     products.value = data;
 });
 
-function removeItem(id: string) {
-    products.value = products.value.filter((product) => product.id !== id);
-}
-
 async function getAllProducts() {
     products.value = await getProducts();
 }
@@ -83,13 +79,14 @@ async function getOnlySProducts() {
 }
 
 .products-grid {
-    --min-card-width: 150px;
+    --min-card-width: 170px;
 
     width: 100%;
+    padding-inline: 0.1rem;
 
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(var(--min-card-width), 1fr));
-    gap: 0.5rem;
+    gap: 1rem;
 
     & > * {
         box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
@@ -98,13 +95,15 @@ async function getOnlySProducts() {
     }
 
     @media (min-width: 584px) {
-        --min-card-width: 200px;
+        padding: initial;
         gap: 1rem;
+        --min-card-width: 200px;
     }
 
     @media (min-width: 940px) {
-        --min-card-width: 260px;
+        --min-card-width: 240px;
         gap: 1.2rem;
+        grid-template-columns: repeat(4, minmax(var(--min-card-width), 1fr));
     }
 }
 </style>

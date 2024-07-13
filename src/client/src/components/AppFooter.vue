@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { COMPANY } from "@/constants/commons";
+
 import Social from "./Social.vue";
 </script>
 
@@ -7,15 +9,13 @@ import Social from "./Social.vue";
         <div class="footer__container">
             <!-- About-Us Sections -->
             <div class="footer-box">
-                <h3>Về PMBL-shee</h3>
+                <h3>Về {{ COMPANY.name }}</h3>
 
                 <ul class="box-links">
                     <li>
-                        <!-- <RouterLink :to="{ name: 'About' }">
+                        <RouterLink :to="{ name: 'About' }">
                             Về Chúng Tôi
-                        </RouterLink> -->
-
-                        <a href="#">Về Chúng Tôi</a>
+                        </RouterLink>
                     </li>
                     <li>
                         <!-- <RouterLink :to="{ name: 'Contact' }">
@@ -33,10 +33,14 @@ import Social from "./Social.vue";
 
                 <ul class="box-links">
                     <li>
-                        <a href="#">Hướng Dẫn Thanh Toán</a>
+                        <RouterLink :to="{ name: 'Payments' }">
+                            Hướng Dẫn Thanh Toán
+                        </RouterLink>
                     </li>
                     <li>
-                        <a href="#">Phương Thức Thanh Toán</a>
+                        <RouterLink :to="{ name: 'Payments' }">
+                            Phương Thức Thanh Toán
+                        </RouterLink>
                     </li>
                 </ul>
             </div>
@@ -46,7 +50,7 @@ import Social from "./Social.vue";
                 <!-- Icon -->
                 <!-- Basket Icon -->
                 <RouterLink :to="{ name: 'Home' }" class="nav__logo">
-                    <i class="bx bx-basket"></i>Delicacy
+                    <i class="bx bx-basket"></i>{{ COMPANY.name }}
                 </RouterLink>
 
                 <!-- Address -->
@@ -67,6 +71,7 @@ footer {
     background-color: #fef4ea;
 
     .footer__container {
+        width: 100vw;
         max-width: 1340px;
         margin-inline: auto;
         margin-top: 2rem;
@@ -147,6 +152,7 @@ footer {
 @media screen and (min-width: 720px) {
     footer {
         .footer__container {
+            width: auto !important;
             padding: 3rem;
             grid-template-columns: 1fr 1fr;
         }

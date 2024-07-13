@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import AppFooter from "./components/AppFooter.vue";
-import AppNav from "./components/AppNav.vue";
+import AppNav from "./components/NavBar/AppNav.vue";
 </script>
 
 <template>

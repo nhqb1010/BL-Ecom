@@ -43,6 +43,8 @@ const { isReady: isLoadedImage } = useImage({ src: imageUrl });
     max-width: 260px;
     border-radius: 0.3rem;
     overflow: hidden;
+    display: flex;
+    flex-flow: column;
 
     cursor: pointer;
 
@@ -59,23 +61,44 @@ const { isReady: isLoadedImage } = useImage({ src: imageUrl });
     &__info {
         padding: 1rem;
         padding-bottom: 2rem;
+        height: auto;
+        flex: 1 1 auto;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
 
         &-name {
-            max-width: 20ch;
-            font-size: 1rem;
-            line-height: 1.5;
             margin-bottom: 1rem;
 
+            font-size: 0.8rem;
+            line-height: 1.5;
+
             transition: color 0.2s ease;
+
+            @media (min-width: 584px) {
+                font-size: 1rem;
+                max-width: 20ch;
+            }
         }
 
         &-price {
-            font-size: 1rem;
+            font-size: 0.8rem;
 
             .og-price {
+                display: none;
+
                 font-size: 0.7rem;
                 text-decoration: line-through;
                 color: var(--gray-color);
+            }
+
+            @media (min-width: 584px) {
+                font-size: 1rem;
+
+                .og-price {
+                    display: initial;
+                }
             }
         }
     }
@@ -85,7 +108,7 @@ const { isReady: isLoadedImage } = useImage({ src: imageUrl });
 
         .product-detail__info {
             &-name {
-                color: var(--green-color);
+                color: var(--orange-color);
             }
         }
     }

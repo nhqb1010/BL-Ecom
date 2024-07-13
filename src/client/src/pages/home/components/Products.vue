@@ -1,22 +1,24 @@
 <script setup lang="ts">
+import { computed, onMounted } from "vue";
+
 import type { IProductDetailType } from "@/types/products";
+
+import { useProductsStore } from "@/stores/products";
 
 import ProductCard from "@/components/ProductCard.vue";
 import { RouterLink } from "vue-router";
 
-const products: IProductDetailType[] = [
-    {
-        imageUrl: "https://picsum.photos/159/300",
-        name: "Hạt điều vị phô mai (Hộp nhựa 120gr)",
-        price: 50_000,
-    },
-    {
-        imageUrl: "https://picsum.photos/150/300",
-        name: "Hạt điều vị phô mai (Hộp nhựa 300gr)",
-        price: 90_000,
-        originalPrice: 120_000,
-    },
-];
+const productsStore = useProductsStore();
+
+const featuredProducts = computed<IProductDetailType[]>(
+    () => productsStore.featuredProducts
+);
+
+onMounted(async () => {
+    if (productsStore.featuredProducts.length) return;
+
+    await productsStore.fetchProducts();
+});
 </script>
 
 <template>
@@ -28,7 +30,7 @@ const products: IProductDetailType[] = [
         <div class="products__container">
             <div class="products_list">
                 <ProductCard
-                    v-for="(product, index) of products"
+                    v-for="(product, index) of featuredProducts"
                     :key="index"
                     v-bind="product"
                 />

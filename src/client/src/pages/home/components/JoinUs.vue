@@ -8,7 +8,7 @@ const email = ref<string>("");
 </script>
 
 <template>
-    <div class="home-join-us home-join-us__container">
+    <div class="home-join-us home-join-us__container" data-aos="flip-right">
         <div class="home-join-us__content">
             <h2 class="home-join-us__content-title">
                 Hãy trở thành một phần của chúng tôi

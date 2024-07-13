@@ -3,7 +3,9 @@ import { useMediaQuery } from "@vueuse/core";
 import { computed, ref, watch } from "vue";
 import { useRoute } from "vue-router";
 
-import { capitalizeString } from "../utils";
+import { COMPANY } from "@/constants/commons";
+import { capitalizeString } from "../../utils";
+import NavBasketIcon from "./NavBasketIcon.vue";
 
 interface NavLink {
     name: string;
@@ -18,10 +20,9 @@ const isLargeScreen = useMediaQuery("(min-width: 1024px)");
 
 const navLinks: NavLink[] = [
     { name: "Home", label: "Trang Chủ" },
-    { name: "Payments", label: "Thanh Toán" },
     { name: "Products", label: "Sản phẩm" },
+    { name: "Payments", label: "Thanh Toán" },
     { name: "About", label: "Về Chúng tôi", routeType: "vueRouter" },
-    { name: "Home", hash: "#customers", label: "Customers" },
 ];
 
 const isActiveLinkIndex = computed(() => {
@@ -97,7 +98,7 @@ watch(route, () => {
 
         <!-- Basket Icon -->
         <RouterLink :to="{ name: 'Home' }" class="nav__logo">
-            <i class="bx bx-basket"></i>Delicacy
+            <i class="bx bx-basket"></i>{{ COMPANY.name }}
         </RouterLink>
 
         <!-- Navbar Links (Desktop) -->
@@ -121,13 +122,20 @@ watch(route, () => {
         </ul>
 
         <!-- Profile -->
-        <div class="nav__profile">
+        <!-- <div class="nav__profile">
             <img src="../assets/images/profile.jpg" alt="profile-avatar" />
 
             <div class="detail">
                 <span>John Doe</span>
                 <i class="bx bx-caret-down"></i>
             </div>
+        </div> -->
+
+        <!-- Basket -->
+        <div class="nav__basket">
+            <p>Giỏ Hàng</p>
+
+            <NavBasketIcon :items="0" />
         </div>
     </nav>
 </template>
@@ -155,6 +163,7 @@ nav {
         align-items: center;
         font-size: 1.2rem;
         font-weight: 600;
+        font-family: var(--primary-font) !important;
         color: var(--orange-color);
         gap: 0.5rem;
 
@@ -180,13 +189,13 @@ nav {
 
                 &:hover,
                 &.active {
-                    background-color: var(--green-color);
+                    background-color: var(--orange-color);
                     color: var(--bg-color);
                     border-radius: 5rem;
                 }
 
                 @media (min-width: 1280px) {
-                    font-size: 1rem;
+                    font-size: 0.85rem;
                     padding: 0.5rem 1.5rem;
                 }
             }
@@ -260,12 +269,40 @@ nav {
         }
     }
 
+    .nav__basket {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+
+        p {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--orange-color);
+            display: none;
+        }
+    }
+
     #menu-icon {
         display: block;
         font-size: 24px;
         color: var(--text-color);
         cursor: pointer;
         z-index: 1001;
+    }
+
+    @media screen and (min-width: 768px) {
+        .nav__logo {
+            font-size: 1.4rem;
+
+            .bx {
+                font-size: 30px;
+            }
+        }
+
+        .nav__basket p {
+            display: initial;
+        }
     }
 
     @media screen and (min-width: 1024px) {
@@ -300,6 +337,16 @@ nav {
 
         #menu-icon {
             display: none;
+        }
+    }
+
+    @media screen and (min-width: 1200px) {
+        .nav__logo {
+            font-size: 1.6rem;
+
+            .bx {
+                font-size: 38px;
+            }
         }
     }
 }

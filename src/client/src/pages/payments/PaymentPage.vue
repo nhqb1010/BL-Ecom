@@ -122,8 +122,10 @@ onMounted(() => {
         font-weight: 600;
         text-align: center;
         margin-block: 1rem;
+        line-height: 1.5;
 
         @media (min-width: 584px) {
+            line-height: initial;
             margin-bottom: 2rem;
         }
     }

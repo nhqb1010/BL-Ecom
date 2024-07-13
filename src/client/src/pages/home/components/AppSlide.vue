@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { COMPANY } from "@/constants/commons";
 import { useScriptTag } from "@vueuse/core";
 
 const swiperScriptLink = `https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js`;
@@ -14,7 +15,7 @@ useScriptTag(
             spaceBetween: 30,
             centeredSlides: true,
             autoplay: {
-                delay: 5000,
+                delay: 10000,
             },
             navigation: {
                 nextEl: ".swiper-button-next",
@@ -32,9 +33,9 @@ useScriptTag(
             <!-- Home Banner -->
             <div class="swiper-slide swiper__slide">
                 <div class="swiper__text">
-                    <span>We are delicacy</span>
+                    <span>We are {{ COMPANY.name }}</span>
                     <h1>
-                        Choose delicacy <br />
+                        Choose {{ COMPANY.name }} <br />
                         the best healthy <br />
                         chicken salad
                     </h1>
@@ -45,7 +46,7 @@ useScriptTag(
                 </div>
 
                 <img
-                    src="../../../assets/images/home-banner.jpg"
+                    src="../../../assets/images/banners/banner2.png"
                     alt="home banner"
                 />
             </div>
@@ -69,15 +70,19 @@ useScriptTag(
                 </div>
 
                 <img
-                    src="../../../assets/images/home-salad.jpg"
+                    src="../../../assets/images/banners/banner1.jpg"
                     alt="home salad"
                 />
             </div>
         </div>
 
         <!-- Swiper Buttons -->
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next">
+            <i class="bx bxs-chevron-right"></i>
+        </div>
+        <div class="swiper-button-prev">
+            <i class="bx bxs-chevron-left"></i>
+        </div>
     </div>
 </template>
 
@@ -130,6 +135,25 @@ useScriptTag(
             //     max-height: 100%;
             //     margin-block: auto;
             // }
+        }
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        i {
+            font-size: 2rem;
+            color: black;
+            transition: ease 0.25s scale;
+        }
+
+        &::after {
+            display: none;
+        }
+
+        &:hover {
+            i {
+                scale: 1.3;
+            }
         }
     }
 }
