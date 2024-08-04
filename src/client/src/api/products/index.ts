@@ -8,45 +8,45 @@ import * as productImgUrl5 from "@/assets/images/products/5.png";
 
 const mockData: IProductDetailType[] = [
     {
-        id: "uuid-100",
+        id: "uuid-1004",
         imageUrl: productImgUrl1.default,
         name: "OR'SHOW PHÔ MAI",
-        price: 90_000,
+        price: 50_000,
         categories: "bag",
     },
     {
-        id: "uuid-100",
+        id: "uuid-1003",
         imageUrl: productImgUrl2.default,
         name: "OR'SHOW CHOCO",
         price: 90_000,
         categories: "bag",
     },
     {
-        id: "uuid-100",
+        id: "uuid-1002",
         imageUrl: productImgUrl3.default,
         name: "OR'SHOW APRICOT",
-        price: 90_000,
+        price: 70_000,
         categories: "bag",
     },
     {
-        id: "uuid-100",
+        id: "uuid-1001",
         imageUrl: productImgUrl4.default,
         name: "OR'SHOW BƠ",
-        price: 90_000,
+        price: 100_000,
         categories: "bag",
     },
     {
-        id: "uuid-100",
+        id: "uuid-1000",
         imageUrl: productImgUrl5.default,
         name: "OR'SHOW TỎI ỚT",
-        price: 90_000,
+        price: 95_000,
         categories: "bag",
     },
     {
         id: "uuid-101",
         imageUrl: "https://picsum.photos/150/300",
         name: "Tai nghe không dây Sony WH-1000XM4",
-        price: 8000000,
+        price: 800_0000,
         categories: "Tai nghe",
     },
     {
@@ -78,4 +78,25 @@ export const filterProductsByCategory = async (
     // });
 
     return mockData.filter((product) => product.categories === category);
+};
+
+export const sortProductsByPrice = async (
+    products: IProductDetailType[],
+    order: "asc" | "desc"
+): Promise<IProductDetailType[]> => {
+    // return new Promise((resolve) => {
+    //     setTimeout(() => {
+    //         resolve(
+    //             products.sort((a, b) =>
+    //                 order === "asc" ? a.price - b.price : b.price - a.price
+    //             )
+    //         );
+    //     }, 1000);
+    // });
+
+    const data = [...products];
+
+    return data.sort((a, b) =>
+        order === "asc" ? a.price - b.price : b.price - a.price
+    );
 };

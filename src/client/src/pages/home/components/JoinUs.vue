@@ -21,13 +21,7 @@ const { stop } = useIntersectionObserver(
 </script>
 
 <template>
-    <div
-        class="home-join-us home-join-us__container"
-        ref="target"
-        :style="{
-            background: targetIsVisible ? 'red !important' : 'blue !important',
-        }"
-    >
+    <div class="home-join-us home-join-us__container" ref="target">
         <div class="home-join-us__content">
             <h2 class="home-join-us__content-title">
                 Hãy trở thành một phần của chúng tôi

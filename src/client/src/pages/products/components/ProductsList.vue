@@ -6,10 +6,15 @@ import PVButton from "primevue/button";
 
 import type { IProductDetailType } from "@/types/products";
 
-import { filterProductsByCategory, getProducts } from "@/api/products";
+import {
+    filterProductsByCategory,
+    getProducts,
+    sortProductsByPrice,
+} from "@/api/products";
 import ProductCard from "@/components/ProductCard.vue";
 
 const products = ref<IProductDetailType[]>([]);
+const orderDir = ref<"asc" | "desc" | null>(null);
 
 onMounted(async () => {
     const data = await getProducts();
@@ -21,11 +26,23 @@ async function getAllProducts() {
 }
 
 async function getOnlyTProducts() {
-    products.value = await filterProductsByCategory("Phụ kiện máy tính");
+    products.value = await filterProductsByCategory("bag");
 }
 
 async function getOnlySProducts() {
     products.value = await filterProductsByCategory("Tai nghe");
+}
+
+async function sortProducts() {
+    if (!orderDir.value) {
+        orderDir.value = "asc";
+    } else {
+        orderDir.value = orderDir.value === "asc" ? "desc" : "asc";
+    }
+
+    const data = await sortProductsByPrice(products.value, orderDir.value);
+
+    products.value = [...data];
 }
 </script>
 
@@ -34,9 +51,9 @@ async function getOnlySProducts() {
         <div class="products-filter">
             <PVButton label="Tất cả" @click="getAllProducts" />
 
-            <PVButton label="Something Else" @click="getOnlyTProducts" />
+            <PVButton label="Túi" @click="getOnlyTProducts" />
 
-            <PVButton label="Something Else 2" @click="getOnlySProducts" />
+            <PVButton label="Sắp Xếp" @click="sortProducts" />
         </div>
 
         <br />
@@ -44,7 +61,7 @@ async function getOnlySProducts() {
         <div class="products-grid products-grid__container" v-auto-animate>
             <ProductCard
                 v-for="(product, index) of products"
-                :key="product.id || index"
+                :key="product.id"
                 v-bind="product"
             />
         </div>
