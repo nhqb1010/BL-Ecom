@@ -41,7 +41,6 @@ async function sortProducts() {
     }
 
     const data = await sortProductsByPrice(products.value, orderDir.value);
-
     products.value = [...data];
 }
 </script>
