@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { computed, onMounted } from "vue";
+import { RouterLink } from "vue-router";
 
 import type { IProductDetailType } from "@/types/products";
 
 import { useProductsStore } from "@/stores/products";
 
 import ProductCard from "@/components/ProductCard.vue";
-import { RouterLink } from "vue-router";
 
 const productsStore = useProductsStore();
 
@@ -33,14 +33,15 @@ onMounted(async () => {
                     v-for="(product, index) of featuredProducts"
                     :key="index"
                     v-bind="product"
+                    data-aos="fade-right"
+                    :data-aos-duration="400 + index * 150"
                 />
             </div>
             <div class="products_more">
-                <!-- <a href="#" class="btn-link see-more">
-                    Xem thêm <i class="bx bx-right-arrow-alt"></i>
-                </a> -->
-
-                <RouterLink to="/products" class="btn-link see-more">
+                <RouterLink
+                    :to="{ name: 'Products' }"
+                    class="btn-link see-more"
+                >
                     Xem thêm <i class="bx bx-right-arrow-alt"></i>
                 </RouterLink>
             </div>

@@ -5,7 +5,11 @@ import { COMPANY } from "@/constants/commons";
 <template>
     <section class="container introduction">
         <!-- Text -->
-        <div class="introduction__text">
+        <div
+            class="introduction__text"
+            data-aos="fade-right"
+            data-aos-duration="700"
+        >
             <h2 class="introduction__title">
                 Câu Chuyện Về
                 <span>{{ COMPANY.name }}</span>
@@ -36,7 +40,11 @@ import { COMPANY } from "@/constants/commons";
         </div>
 
         <!-- Brand Image -->
-        <div class="introduction__brand">
+        <div
+            class="introduction__brand"
+            data-aos="fade-left"
+            data-aos-duration="700"
+        >
             <img
                 src="../../../assets/images/intro/1.jpg"
                 alt="Brand"

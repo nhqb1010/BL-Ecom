@@ -21,7 +21,12 @@ const { stop } = useIntersectionObserver(
 </script>
 
 <template>
-    <div class="home-join-us home-join-us__container" ref="target">
+    <div
+        class="home-join-us home-join-us__container"
+        ref="target"
+        data-aos="flip-up"
+        data-aos-duration="700"
+    >
         <div class="home-join-us__content">
             <h2 class="home-join-us__content-title">
                 Hãy trở thành một phần của chúng tôi
@@ -51,8 +56,8 @@ const { stop } = useIntersectionObserver(
     border-radius: 2rem;
     background: linear-gradient(
         to right,
-        var(--green-color),
-        var(--light-green-color)
+        var(--light-green-color),
+        var(--lighter-green-color)
     );
     margin-inline: auto;
     padding: 3rem;

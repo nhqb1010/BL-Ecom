@@ -1,5 +1,8 @@
 import "./assets/css/main.scss";
 
+import AOS from "aos";
+import "aos/dist/aos.css"; // You can also use <link> for styles
+
 import Aura from "@primevue/themes/aura";
 import PrimeVue from "primevue/config";
 
@@ -25,3 +28,5 @@ app.use(createPinia());
 app.use(router);
 
 app.mount("#app");
+
+AOS.init();
