@@ -1,4 +1,5 @@
 @import "./base.css";
+@import "./primevue.scss";
 
 .skeleton {
     --under-color: #dddbdd;
@@ -38,6 +39,10 @@
     }
 }
 
+.prevent-newline {
+    white-space: nowrap;
+}
+
 .btn-link {
     background-color: var(--orange-color);
     color: #fff;
@@ -56,6 +61,17 @@
     }
 }
 
+.href-link {
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--orange-color);
+    transition: all 0.1s ease;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
 .nav__logo {
     display: flex;
     align-items: center;
@@ -68,4 +84,10 @@
         font-size: 24px;
         color: var(--orange-color);
     }
+}
+
+.pricing-text {
+    letter-spacing: 0.03em;
+    line-height: 20px;
+    font-weight: 500;
 }

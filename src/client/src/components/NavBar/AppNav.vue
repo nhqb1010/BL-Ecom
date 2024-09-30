@@ -53,18 +53,6 @@ watch(route, () => {
         }
     }
 });
-
-// Scroll to hash section
-// onMounted(() => {
-//     console.log("wtf", route.hash, route.fullPath);
-//     if (route.hash) {
-//         console.log("very nice", route.hash);
-//         const el = document.querySelector(route.hash);
-//         if (el) {
-//             el.scrollIntoView({ behavior: "smooth" });
-//         }
-//     }
-// });
 </script>
 
 <template>

@@ -1,16 +1,23 @@
 <script setup lang="ts">
+import { useRouter } from "vue-router";
+
 import { useImage } from "@vueuse/core";
 
 import type { IProductDetailType } from "@/types/products";
 
-const { imageUrl, name, price, originalPrice } =
+const router = useRouter();
+const { imageUrl, name, price, originalPrice, id } =
     defineProps<IProductDetailType>();
 
 const { isReady: isLoadedImage } = useImage({ src: imageUrl });
+
+const navigateToDetail = () => {
+    router.push({ name: "ProductDetail", params: { id } });
+};
 </script>
 
 <template>
-    <div class="product-detail">
+    <div class="product-detail" @click="navigateToDetail">
         <div class="product-detail__image">
             <!-- Lazy Load the image -->
             <img

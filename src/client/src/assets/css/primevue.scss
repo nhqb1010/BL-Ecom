@@ -1,0 +1,11 @@
+@import "./base.css";
+
+:root {
+    --p-inputtext-focus-border-color: var(--orange-color) !important;
+    --p-inputtext-transition-duration: 0.05s !important;
+}
+
+.small-text-input {
+    width: 3.5rem;
+    text-align: center;
+}

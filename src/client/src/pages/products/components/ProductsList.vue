@@ -29,10 +29,6 @@ async function getOnlyTProducts() {
     products.value = await filterProductsByCategory("bag");
 }
 
-async function getOnlySProducts() {
-    products.value = await filterProductsByCategory("Tai nghe");
-}
-
 async function sortProducts() {
     if (!orderDir.value) {
         orderDir.value = "asc";

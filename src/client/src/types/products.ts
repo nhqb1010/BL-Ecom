@@ -5,4 +5,5 @@ export interface IProductDetailType {
     price: number;
     originalPrice?: number;
     categories?: string;
+    description?: string;
 }

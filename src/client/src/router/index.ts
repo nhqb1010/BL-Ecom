@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import HomePage from "@/pages/home/HomePage.vue";
+import NotFoundPage from "@/pages/NotFoundPage.vue";
 import PaymentsPage from "@/pages/payments/PaymentPage.vue";
 
 const router = createRouter({
@@ -22,12 +23,27 @@ const router = createRouter({
             component: () => import("@/pages/products/ProductsPage.vue"),
         },
         {
+            path: "/products/:id",
+            name: "ProductDetail",
+            component: () =>
+                import("@/pages/products/details/ProductDetail.vue"),
+        },
+        {
             path: "/about",
             name: "About",
-            // route level code-splitting
-            // this generates a separate chunk (About.[hash].js) for this route
-            // which is lazy-loaded when the route is visited.
             component: () => import("../pages/AboutPage.vue"),
+        },
+        {
+            path: "/404",
+            name: "404",
+            meta: { noAuth: true },
+            component: NotFoundPage,
+        },
+        // will match everything and put it under `route.params.pathMatch`
+        {
+            path: "/:pathMatch(.*)*",
+            redirect: { name: "404" },
+            meta: { noAuth: true },
         },
     ],
     scrollBehavior(to, from, savedPosition) {
