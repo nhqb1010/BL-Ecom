@@ -1,0 +1,93 @@
+@import "./base.css";
+@import "./primevue.scss";
+
+.skeleton {
+    --under-color: #dddbdd;
+
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: var(--under-color);
+
+    &__square {
+        aspect-ratio: 1 / 1;
+    }
+
+    &::after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        transform: translateX(-100%);
+        background-image: linear-gradient(
+            90deg,
+            rgba(#fff, 0) 0,
+            rgba(#fff, 0.2) 20%,
+            rgba(#fff, 0.5) 60%,
+            rgba(#fff, 0)
+        );
+        animation: shimmer 1.2s infinite;
+        content: "";
+    }
+
+    @keyframes shimmer {
+        100% {
+            transform: translateX(100%);
+        }
+    }
+}
+
+.prevent-newline {
+    white-space: nowrap;
+}
+
+.btn-link {
+    background-color: var(--orange-color);
+    color: #fff;
+    border-radius: 5rem;
+    padding: 0.5rem 1.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease-in;
+
+    &:hover,
+    &:focus {
+        color: var(--orange-color);
+        background: transparent;
+        outline: solid 2px var(--orange-color);
+        outline-offset: -2px;
+    }
+}
+
+.href-link {
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--orange-color);
+    transition: all 0.1s ease;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.nav__logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--orange-color);
+    gap: 0.5rem;
+
+    .bx {
+        font-size: 24px;
+        color: var(--orange-color);
+    }
+}
+
+.pricing-text {
+    letter-spacing: 0.03em;
+    line-height: 20px;
+    font-weight: 500;
+}

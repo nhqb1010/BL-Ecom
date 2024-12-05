@@ -1,3 +1,6 @@
+@import "./reset.css";
+@import url("https://fonts.cdnfonts.com/css/holla");
+
 /* :root {
     --vt-c-white: #ffffff;
     --vt-c-white-soft: #f8f8f8;
@@ -47,3 +50,67 @@
         --color-text: var(--vt-c-text-dark-2);
     }
 } */
+
+:root {
+    --green-color: #3cb815;
+    --light-green-color: #c0eb7b;
+    --lighter-green-color: #cff592;
+    --orange-color: #f8b358;
+    --light-orange-color: #f5d6ae;
+    --text-color: #1a2428;
+    --bg-color: #fff;
+
+    --nav-height: 3.5rem;
+    --vn-font-family: "Montserrat", Arial, Helvetica, sans-serif;
+    --primary-font: "Holla", Helvetica, sans-serif;
+}
+
+* {
+    font-family: var(--vn-font-family);
+    box-sizing: border-box;
+
+    /* scrolling */
+    scroll-padding-top: 2rem;
+    scroll-behavior: smooth;
+}
+
+span,
+a,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input {
+    font-family: var(--vn-font-family) !important;
+}
+
+image {
+    width: 100%;
+}
+
+body {
+    color: var(--text-color);
+    display: grid;
+    place-items: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
